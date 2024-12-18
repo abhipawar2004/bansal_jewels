@@ -8,9 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int myIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,12 +62,18 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        
+        onTap: (index) {
+          setState(() {
+            myIndex = index;
+          });
+        },
+        currentIndex: myIndex,
         selectedItemColor: const Color(0xFF7D0C11),
         unselectedItemColor: Colors.black,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.whatsapp), label: 'Whatsapp'),
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.whatsapp), label: 'Whatsapp'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_border), label: 'Favourite'),
           BottomNavigationBarItem(
