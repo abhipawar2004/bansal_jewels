@@ -20,4 +20,4 @@ class Jewellers extends StatelessWidget {
       home:const HomeScreen(),
     );
   }
-}
+} 
